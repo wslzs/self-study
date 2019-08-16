@@ -1,2 +1,2 @@
-# study
-hello-spring-cloud-alibaba-new
+# self-study
+Lifelong learning
