@@ -1,0 +1,23 @@
+server:
+  port: 8884
+
+spring:
+  application:
+    name: gateway-zuul
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+zuul:
+  routes:
+    #路由某个服务
+    consumer-feign: /feign/**
+  #忽略某个服务，多个用逗号分隔
+  ignored-services :
+    consumer-ribbon,provider
+
+logging:
+  level:
+    com.netflix: DEBUG

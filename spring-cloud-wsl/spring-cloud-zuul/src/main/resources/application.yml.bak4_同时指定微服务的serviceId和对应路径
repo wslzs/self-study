@@ -1,0 +1,19 @@
+server:
+  port: 8884
+spring:
+  application:
+    name: gateway-zuul
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+zuul:
+  routes:
+    feign-consumer:                   # 该配置方式中，feign-consumer只是给路由一个名称，可以任意起名。
+      service-id: feign-consumer
+      path: /feign/**              # service-id对应的路径
+management:
+  security:
+    enabled: false

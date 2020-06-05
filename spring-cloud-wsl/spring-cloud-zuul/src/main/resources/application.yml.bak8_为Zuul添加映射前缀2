@@ -1,0 +1,26 @@
+server:
+  port: 8884
+spring:
+  application:
+    name: gateway-zuul
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+zuul:
+  routes:
+    feign-consumer:
+      path: /feign/**
+      strip-prefix: false
+logging:
+  level:
+    com.netflix: DEBUG
+
+management:
+  security:
+    enabled: false
+
+
+# 这样访问Zuul的/feign/1路径，请求将会被转发到的/feign/1，可查看日志打印，有助于理解。provider

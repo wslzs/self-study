@@ -1,0 +1,25 @@
+server:
+  port: 8884
+spring:
+  application:
+    name: gateway-zuul
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    prefer-ip-address: true
+zuul:
+  routes:
+    feign-route:
+      path: /feign/**
+      service-id: provider
+ribbon:
+  eureka:
+    enabled: false    # 禁用掉ribbon的eureka使用。详见：http://cloud.spring.io/spring-cloud-static/Camden.SR3/#_example_disable_eureka_use_in_ribbon
+provider:
+  ribbon:
+    listOfServers: localhost:8880,localhost:8881
+management:
+  security:
+    enabled: false
